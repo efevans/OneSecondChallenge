@@ -73,7 +73,9 @@ public class GameScreen implements Screen {
 		setDisplay(this.winState);
 	}
 	
-	// checks if the 
+	// checks if the time of the screen being held down is within the "win" bounds
+	// this will be trial and error about what the bounds should end up as, how
+	// to balance proper difficulty.
 	private boolean withinBounds(float time)
 	{
 		if (time > 0.93f && time < 1.07f)
