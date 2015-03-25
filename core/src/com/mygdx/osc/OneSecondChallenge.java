@@ -10,13 +10,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class OneSecondChallenge extends Game implements ApplicationListener {
 	
 	@Override
-	public void create () {
+	public void create () 
+	{
 		// load assets and initialize any data here
-		setScreen(new GameScreen(this));
+//		setScreen(new GameScreen(this));
+		setScreen(new MainMenuScreen(this));
 	}
 	
 	@Override
-	public void dispose() {
+	public void dispose() 
+	{
 //		super.dispose();
 	}
 }

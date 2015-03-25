@@ -6,7 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class GameScreen implements Screen {
+public class GameScreen implements Screen 
+{
 	
 	enum WinState
 	{
@@ -21,7 +22,8 @@ public class GameScreen implements Screen {
 	boolean timing;
 	WinState winState;
 	
-	public GameScreen(OneSecondChallenge game){
+	public GameScreen(OneSecondChallenge game)
+	{
 		this.game = game;
 		this.touchTimer = 0.0f;
 		this.timing = false;
@@ -29,13 +31,15 @@ public class GameScreen implements Screen {
 	}
 
 	@Override
-	public void show() {
+	public void show() 
+	{
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void render(float delta) {
+	public void render(float delta) 
+	{
 		
 		// while screen is touched accumulate time of touch
 		if (Gdx.input.isTouched())
@@ -110,31 +114,36 @@ public class GameScreen implements Screen {
 	}
 
 	@Override
-	public void resize(int width, int height) {
+	public void resize(int width, int height) 
+	{
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void pause() {
+	public void pause() 
+	{
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void resume() {
+	public void resume() 
+	{
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void hide() {
+	public void hide() 
+	{
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void dispose() {
+	public void dispose() 
+	{
 		// TODO Auto-generated method stub
 
 	}
