@@ -24,7 +24,7 @@ public class MainMenuScreen implements Screen
 	{
 		batch = new SpriteBatch();
 		stage = new Stage();
-		mainMenuTable = new MainMenuTable();
+		mainMenuTable = new MainMenuTable(game);
 		
 		stage.addActor(mainMenuTable.getTable());
 		Gdx.input.setInputProcessor(stage);
@@ -70,7 +70,8 @@ public class MainMenuScreen implements Screen
 	@Override
 	public void dispose() 
 	{
-		// TODO Auto-generated method stub
+		batch.dispose();
+		stage.dispose();
 
 	}
 

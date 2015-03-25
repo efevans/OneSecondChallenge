@@ -12,7 +12,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 public class MainMenuTable extends AbstractButtonTable 
 {
 
-	public MainMenuTable(){
+	OneSecondChallenge game;
+	
+	public MainMenuTable(OneSecondChallenge game){
+		this.game = game;
 		initialize();
 	}
 	
@@ -31,9 +34,9 @@ public class MainMenuTable extends AbstractButtonTable
 	public void readyTable() 
 	{
 		table.row().prefSize(120, 60);
-		table.add(buttonMap.get("Start")).pad(10).prefSize(120, 60);
+		table.add(buttonMap.get("Start")).pad(10).prefSize(240, 120);
 		table.row();
-		table.add(buttonMap.get("Temp")).pad(10).prefSize(120, 60);
+		table.add(buttonMap.get("Temp")).pad(10).prefSize(240, 120);
 		table.setFillParent(true);
 
 	}
@@ -48,6 +51,8 @@ public class MainMenuTable extends AbstractButtonTable
 			public void clicked(InputEvent event, float x, float y)
 			{
 				Gdx.app.log("MyTag", "clicked!");
+				Gdx.input.setInputProcessor(null);
+				game.setScreen(new GameScreen(game));
 			}
 		});
 		
