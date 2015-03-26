@@ -3,8 +3,7 @@ package com.mygdx.osc;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class GameScreen implements Screen 
 {
@@ -18,76 +17,30 @@ public class GameScreen implements Screen
 	}
 	
 	private OneSecondChallenge game;
-	float touchTimer;
-	boolean timing;
-	WinState winState;
+	private Stage stage;
+	private static WinState winState;
 	
 	public GameScreen(OneSecondChallenge game)
 	{
 		this.game = game;
-		this.touchTimer = 0.0f;
-		this.timing = false;
-		this.winState = WinState.NOTPLAYED;
 	}
 
 	@Override
 	public void show() 
 	{
-		// TODO Auto-generated method stub
+		winState = WinState.NOTPLAYED;
+		stage = new Stage();
+		stage.addActor(new HoldArea());
+		
+		Gdx.input.setInputProcessor(stage);
 
 	}
 
 	@Override
 	public void render(float delta) 
 	{
-		
-		// while screen is touched accumulate time of touch
-		if (Gdx.input.isTouched())
-		{
-			timing = true;
-			touchTimer += delta;
-			this.winState = WinState.TIMING;
-		}
-		else // screen is not being touched
-		{
-			
-			// if this is the first loop after finishing touching, check for win
-			if(timing)
-			{
-				if (withinBounds(touchTimer))
-				{
-					this.winState = WinState.WONLAST;
-				}
-				else
-				{
-					this.winState = WinState.LOSTLAST;
-				}
-				
-				timing = false;
-			}
-			
-			// logging the end time for testing, also reset timer here
-			if (touchTimer > 0.0f)
-			{
-				Gdx.app.log("MyTag", Float.toString(touchTimer));
-				touchTimer = 0.0f;
-			}
-		}
-		
-		setDisplay(this.winState);
-	}
-	
-	// checks if the time of the screen being held down is within the "win" bounds
-	// this will be trial and error about what the bounds should end up as, how
-	// to balance proper difficulty.
-	private boolean withinBounds(float time)
-	{
-		if (time > 0.93f && time < 1.07f)
-		{
-			return true;
-		}
-		
-		return false;
+		stage.act(delta);
+		setDisplay(winState);
 	}
 	
 	private void setDisplay(WinState winState)
@@ -113,34 +66,40 @@ public class GameScreen implements Screen
 		}
 	}
 
-	@Override
-	public void resize(int width, int height) 
+	static public WinState getState()
 	{
-		// TODO Auto-generated method stub
-
+		return winState;
+	}
+	
+	static public void setState(WinState state)
+	{
+		winState = state;
 	}
 
 	@Override
-	public void pause() 
-	{
+	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void resume() 
-	{
+	public void pause() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void hide() 
-	{
+	public void resume() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
+	@Override
+	public void hide() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	@Override
 	public void dispose() 
 	{
