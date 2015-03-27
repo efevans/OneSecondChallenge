@@ -1,7 +1,6 @@
 package com.mygdx.osc;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -39,14 +38,7 @@ public class HoldArea extends Actor
 			}
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 			{
-				if(withinBounds(touchTimer))
-				{
-					GameScreen.setState(GameScreen.WinState.WONLAST);
-				}
-				else
-				{
-					GameScreen.setState(GameScreen.WinState.LOSTLAST);
-				}
+				checkBounds(touchTimer);
 				timing = false;
 				Gdx.app.log("HoldArea", Float.toString(touchTimer));
 			}
@@ -59,11 +51,17 @@ public class HoldArea extends Actor
 		this.timing = false;
 	}
 	
-	private boolean withinBounds(float time)
+	private boolean checkBounds(float time)
 	{
 		if (time > 0.93f && time < 1.07f)
 		{
-			return true;
+			CurrentScore.incrementScore();
+			GameScreen.setState(GameScreen.WinState.WONLAST);
+		}
+		else
+		{
+			CurrentScore.resetScore();
+			GameScreen.setState(GameScreen.WinState.LOSTLAST);
 		}
 		
 		return false;

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class GameScreen implements Screen 
 {
@@ -31,6 +32,7 @@ public class GameScreen implements Screen
 		winState = WinState.NOTPLAYED;
 		stage = new Stage();
 		stage.addActor(new HoldArea());
+		stage.addActor(new CurrentScore(new Skin(Gdx.files.internal("skins/uiskin.json"))));
 		
 		Gdx.input.setInputProcessor(stage);
 
@@ -39,8 +41,9 @@ public class GameScreen implements Screen
 	@Override
 	public void render(float delta) 
 	{
-		stage.act(delta);
 		setDisplay(winState);
+		stage.act(delta);
+		stage.draw();
 	}
 	
 	private void setDisplay(WinState winState)
@@ -77,33 +80,37 @@ public class GameScreen implements Screen
 	}
 
 	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
+	public void resize(int width, int height) 
+	{
+
 		
 	}
 
 	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
+	public void pause() 
+	{
+
 		
 	}
 
 	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
+	public void resume() 
+	{
+
 		
 	}
 
 	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
+	public void hide() 
+	{
+
 		
 	}
 	
 	@Override
 	public void dispose() 
 	{
-		// TODO Auto-generated method stub
+
 
 	}
 
