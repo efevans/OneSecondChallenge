@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 public class CurrentScore extends Label
 {
 	
-	static int currentScore;
+	private int currentScore;
 	
 	public CurrentScore(Skin skin)
 	{
@@ -28,17 +28,17 @@ public class CurrentScore extends Label
 		setText(Integer.toString(currentScore));
 	}
 	
-	static public void incrementScore()
+	public void incrementScore()
 	{
 		++currentScore;
 	}
 	
-	static public void resetScore()
+	public void resetScore()
 	{
 		currentScore = 0;
 	}
 	
-	static public int getScore()
+	public int getScore()
 	{
 		return currentScore;
 	}

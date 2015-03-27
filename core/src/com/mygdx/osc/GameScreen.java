@@ -18,8 +18,14 @@ public class GameScreen implements Screen
 	}
 	
 	private OneSecondChallenge game;
+	
+	// personal objects
 	private Stage stage;
 	private static WinState winState;
+	
+	// class interface objects
+	HoldArea holdArea;
+	CurrentScore currentScore;
 	
 	public GameScreen(OneSecondChallenge game)
 	{
@@ -31,8 +37,10 @@ public class GameScreen implements Screen
 	{
 		winState = WinState.NOTPLAYED;
 		stage = new Stage();
-		stage.addActor(new HoldArea());
-		stage.addActor(new CurrentScore(new Skin(Gdx.files.internal("skins/uiskin.json"))));
+		holdArea = new HoldArea(this);
+		currentScore = new CurrentScore(new Skin(Gdx.files.internal("skins/uiskin.json")));
+		stage.addActor(holdArea);
+		stage.addActor(currentScore);
 		
 		Gdx.input.setInputProcessor(stage);
 
@@ -69,29 +77,29 @@ public class GameScreen implements Screen
 		}
 	}
 
-	static public WinState getState()
+	public WinState getState()
 	{
 		return winState;
 	}
 	
-	static public void setState(WinState state)
+	public void setState(WinState state)
 	{
 		winState = state;
 	}
 	
-	static public int getScore()
+	public int getScore()
 	{
-		return CurrentScore.getScore();
+		return currentScore.getScore();
 	}
 	
-	static public void incrementScore()
+	public void incrementScore()
 	{
-		CurrentScore.incrementScore();
+		currentScore.incrementScore();
 	}
 	
-	static public void resetScore()
+	public void resetScore()
 	{
-		CurrentScore.resetScore();
+		currentScore.resetScore();
 	}
 
 	@Override

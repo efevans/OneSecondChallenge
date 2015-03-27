@@ -11,11 +11,14 @@ public class HoldArea extends Actor
 	
 	private static final float topBuffer = 0.2f;
 	
+	GameScreen gameScreen;
+	
 	float touchTimer;
 	boolean timing;
 	
-	public HoldArea()
+	public HoldArea(GameScreen gameScreen)
 	{
+		this.gameScreen = gameScreen;
 		initializeActor();
 		initializeTiming();
 	}
@@ -32,7 +35,7 @@ public class HoldArea extends Actor
 			{
 				touchTimer = 0.0f;
 				timing = true;
-				GameScreen.setState(GameScreen.WinState.TIMING);
+				gameScreen.setState(GameScreen.WinState.TIMING);
 				Gdx.app.log("HoldArea", "yep, it touched down");
 				return true;
 			}
@@ -55,13 +58,13 @@ public class HoldArea extends Actor
 	{
 		if (time > 0.93f && time < 1.07f)
 		{
-			GameScreen.incrementScore();
-			GameScreen.setState(GameScreen.WinState.WONLAST);
+			gameScreen.incrementScore();
+			gameScreen.setState(GameScreen.WinState.WONLAST);
 		}
 		else
 		{
-			GameScreen.resetScore();
-			GameScreen.setState(GameScreen.WinState.LOSTLAST);
+			gameScreen.resetScore();
+			gameScreen.setState(GameScreen.WinState.LOSTLAST);
 		}
 		
 		return false;
