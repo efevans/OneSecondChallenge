@@ -23,9 +23,10 @@ public class GameScreen implements Screen
 	private Stage stage;
 	private static WinState winState;
 	
-	// class interface objects
+	// game objects
 	HoldArea holdArea;
 	CurrentScore currentScore;
+	HighScore highScore;
 	
 	public GameScreen(OneSecondChallenge game)
 	{
@@ -36,14 +37,27 @@ public class GameScreen implements Screen
 	public void show() 
 	{
 		winState = WinState.NOTPLAYED;
-		stage = new Stage();
-		holdArea = new HoldArea(this);
-		currentScore = new CurrentScore(new Skin(Gdx.files.internal("skins/uiskin.json")));
-		stage.addActor(holdArea);
-		stage.addActor(currentScore);
+		initializeGameObjects();
+		initializeStage();
 		
 		Gdx.input.setInputProcessor(stage);
-
+	}
+	
+	// initialize the set of game objects that gon on the GameScreen
+	private void initializeGameObjects()
+	{
+		holdArea = new HoldArea(this);
+		currentScore = new CurrentScore(new Skin(Gdx.files.internal("skins/uiskin.json")));
+		highScore = new HighScore(new Skin(Gdx.files.internal("skins/uiskin.json")));
+	}
+	
+	// initialize the stage object and actors within it
+	private void initializeStage()
+	{
+		stage = new Stage();
+		stage.addActor(holdArea);
+		stage.addActor(currentScore);
+		stage.addActor(highScore);
 	}
 
 	@Override
@@ -54,6 +68,8 @@ public class GameScreen implements Screen
 		stage.draw();
 	}
 	
+	// set the color of the display depending on the current state
+	// TODO make this more involved with pretty graphics
 	private void setDisplay(WinState winState)
 	{
 		switch (winState)
@@ -87,19 +103,23 @@ public class GameScreen implements Screen
 		winState = state;
 	}
 	
+	// get current score
 	public int getScore()
 	{
-		return currentScore.getScore();
+		return currentScore.getCurrentScore();
 	}
 	
+	// increment current score and update high score if needed
 	public void incrementScore()
 	{
-		currentScore.incrementScore();
+		currentScore.incrementCurrentScore();
+		highScore.trySetHighScore(currentScore.getCurrentScore());
 	}
 	
+	// reset current score, after a loss
 	public void resetScore()
 	{
-		currentScore.resetScore();
+		currentScore.resetCurrentScore();
 	}
 
 	@Override

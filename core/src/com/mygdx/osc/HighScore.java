@@ -6,42 +6,36 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mygdx.osc.playerdata.GlobalPlayerData;
 
-public class CurrentScore extends Label
+public class HighScore extends Label
 {
+
+	private int highScore;
 	
-	private int currentScore;
-	
-	public CurrentScore(Skin skin)
+	public HighScore(Skin skin)
 	{
-		super("hi", skin);
-		currentScore = 0;
+		super("", skin);
+		highScore = GlobalPlayerData.getHighScore();
 		setTouchable(Touchable.disabled);
 		
 		// TODO make this more clear and platform independent
 		setFontScale(5);
 		setY(Gdx.graphics.getHeight() - 60);
-		setX(10);
+		setX(Gdx.graphics.getWidth() - 50);
 	}
 	
 	@Override
 	public void act(float delta)
 	{
-		setText(Integer.toString(currentScore));
+		setText(Integer.toString(highScore));
 	}
 	
-	public void incrementCurrentScore()
+	public void trySetHighScore(int score)
 	{
-		++currentScore;
+		if (score > highScore)
+		{
+			highScore = score;
+			GlobalPlayerData.forceSetNewHighScore(highScore);
+		}
 	}
-	
-	public void resetCurrentScore()
-	{
-		currentScore = 0;
-	}
-	
-	public int getCurrentScore()
-	{
-		return currentScore;
-	}
-	
+
 }

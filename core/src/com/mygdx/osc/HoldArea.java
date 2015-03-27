@@ -23,6 +23,7 @@ public class HoldArea extends Actor
 		initializeTiming();
 	}
 	
+	// initialize the hold screen actor, particularly the input listener for screen touching
 	private void initializeActor()
 	{
 		float height = Gdx.graphics.getHeight();
@@ -54,6 +55,7 @@ public class HoldArea extends Actor
 		this.timing = false;
 	}
 	
+	// check if the time is within the bounds for "winning", update accordingly
 	private boolean checkBounds(float time)
 	{
 		if (time > 0.93f && time < 1.07f)
