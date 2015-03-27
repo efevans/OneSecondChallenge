@@ -2,10 +2,7 @@ package com.mygdx.osc;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.osc.playerdata.GlobalPlayerData;
 
 public class OneSecondChallenge extends Game implements ApplicationListener {
 	
@@ -13,7 +10,8 @@ public class OneSecondChallenge extends Game implements ApplicationListener {
 	public void create () 
 	{
 		// load assets and initialize any data here
-//		setScreen(new GameScreen(this));
+		GlobalPlayerData.initPlayerData();
+		
 		setScreen(new MainMenuScreen(this));
 	}
 	
