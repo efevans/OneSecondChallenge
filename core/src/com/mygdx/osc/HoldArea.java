@@ -55,12 +55,12 @@ public class HoldArea extends Actor
 	{
 		if (time > 0.93f && time < 1.07f)
 		{
-			CurrentScore.incrementScore();
+			GameScreen.incrementScore();
 			GameScreen.setState(GameScreen.WinState.WONLAST);
 		}
 		else
 		{
-			CurrentScore.resetScore();
+			GameScreen.resetScore();
 			GameScreen.setState(GameScreen.WinState.LOSTLAST);
 		}
 		
@@ -75,6 +75,7 @@ public class HoldArea extends Actor
 			touchTimer += delta;
 		}
 	}
+	
 	
 //	@Override
 //	public void draw(Batch batch, float parentAlpha)

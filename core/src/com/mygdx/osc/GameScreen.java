@@ -78,6 +78,21 @@ public class GameScreen implements Screen
 	{
 		winState = state;
 	}
+	
+	static public int getScore()
+	{
+		return CurrentScore.getScore();
+	}
+	
+	static public void incrementScore()
+	{
+		CurrentScore.incrementScore();
+	}
+	
+	static public void resetScore()
+	{
+		CurrentScore.resetScore();
+	}
 
 	@Override
 	public void resize(int width, int height) 
