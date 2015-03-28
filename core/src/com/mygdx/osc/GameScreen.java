@@ -3,6 +3,8 @@ package com.mygdx.osc;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
@@ -27,6 +29,7 @@ public class GameScreen implements Screen
 	HoldArea holdArea;
 	CurrentScore currentScore;
 	HighScore highScore;
+	EmotionalHumanoid emotionalHumanoid;
 	
 	public GameScreen(OneSecondChallenge game)
 	{
@@ -49,6 +52,8 @@ public class GameScreen implements Screen
 		holdArea = new HoldArea(this);
 		currentScore = new CurrentScore(new Skin(Gdx.files.internal("skins/uiskin.json")));
 		highScore = new HighScore(new Skin(Gdx.files.internal("skins/uiskin.json")));
+		Texture temp = new Texture(Gdx.files.internal("textures/test1.png"));
+		emotionalHumanoid = new EmotionalHumanoid(new Sprite(temp));
 	}
 	
 	// initialize the stage object and actors within it
@@ -58,6 +63,7 @@ public class GameScreen implements Screen
 		stage.addActor(holdArea);
 		stage.addActor(currentScore);
 		stage.addActor(highScore);
+		stage.addActor(emotionalHumanoid);
 	}
 
 	@Override
