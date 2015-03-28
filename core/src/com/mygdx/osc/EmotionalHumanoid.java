@@ -1,3 +1,6 @@
+// Game object to go on the Game Screen that displays some image as feedback for the 
+// player's performance
+
 package com.mygdx.osc;
 
 import com.badlogic.gdx.Gdx;

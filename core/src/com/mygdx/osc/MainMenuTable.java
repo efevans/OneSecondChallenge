@@ -1,3 +1,7 @@
+// Button Table for the Main Menu
+// Should contain buttons for any functionality desired at the main menu
+// eg. Start Game, reset high Score
+
 package com.mygdx.osc;
 
 import java.util.HashMap;
@@ -29,18 +33,7 @@ public class MainMenuTable extends AbstractButtonTable
 		readyButtons();
 		readyTable();
 	}
-
-	@Override
-	public void readyTable() 
-	{
-		table.row().prefSize(120, 60);
-		table.add(buttonMap.get("Start")).pad(10).prefSize(240, 120);
-		table.row();
-		table.add(buttonMap.get("Temp")).pad(10).prefSize(240, 120);
-		table.setFillParent(true);
-
-	}
-
+	
 	@Override
 	public void readyButtons() 
 	{
@@ -61,4 +54,14 @@ public class MainMenuTable extends AbstractButtonTable
 		
 	}
 
+	@Override
+	public void readyTable() 
+	{
+		table.row().prefSize(120, 60);
+		table.add(buttonMap.get("Start")).pad(10).prefSize(240, 120);
+		table.row();
+		table.add(buttonMap.get("Temp")).pad(10).prefSize(240, 120);
+		table.setFillParent(true);
+
+	}
 }

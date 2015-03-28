@@ -1,3 +1,5 @@
+// Basic class for player data, only player data atm is high score
+
 package com.mygdx.osc.playerdata;
 
 public class PlayerData 

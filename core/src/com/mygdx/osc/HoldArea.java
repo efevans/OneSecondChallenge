@@ -1,3 +1,6 @@
+// Game object to go on the Game Screen. Contains the logic for timing the player's touches
+// and notifying the Game Screen to update state.
+
 package com.mygdx.osc;
 
 import com.badlogic.gdx.Gdx;

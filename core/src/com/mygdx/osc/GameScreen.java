@@ -1,3 +1,7 @@
+// Game Screen where the main game is played. Contains the accessor functions for
+// each of the objects on the game screen to interact to each other through. Contains the
+// game state.
+
 package com.mygdx.osc;
 
 import com.badlogic.gdx.Gdx;

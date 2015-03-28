@@ -1,3 +1,5 @@
+// abstract class intended to ease the creation of ButtonTable
+
 package com.mygdx.osc;
 
 import java.util.HashMap;
@@ -11,11 +13,16 @@ public abstract class AbstractButtonTable
 	
 	protected Table table;
 	protected Skin skin;
-	protected HashMap<String, TextButton> buttonMap;
+	protected HashMap<String, TextButton> buttonMap; // hash of Strings to buttons
 	
+	// general function to initialize the class's objects including table and buttons
 	public abstract void initialize(); // perhaps take a viewport?
-	public abstract void readyTable(); // perhaps take a viewport?
+	
+	// should be overriden to ready all the buttons
 	public abstract void readyButtons();
+	
+	// should b overridden to ready anything for the table
+	public abstract void readyTable(); // perhaps take a viewport?
 	
 	public Table getTable()
 	{

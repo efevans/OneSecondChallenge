@@ -1,3 +1,5 @@
+// Game object to go on the GameScreen that displays the player's high score across all plays
+
 package com.mygdx.osc;
 
 import com.badlogic.gdx.Gdx;

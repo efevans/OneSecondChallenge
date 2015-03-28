@@ -1,3 +1,6 @@
+// Basic Main Menu. Current just contains buttons for access the playable game screen. 
+// Considering if it would be useful to have a reset high score button here.
+
 package com.mygdx.osc;
 
 import com.badlogic.gdx.Gdx;
