@@ -50,10 +50,9 @@ public class GameScreen implements Screen
 	private void initializeGameObjects()
 	{
 		holdArea = new HoldArea(this);
-		currentScore = new CurrentScore(new Skin(Gdx.files.internal("skins/uiskin.json")));
-		highScore = new HighScore(new Skin(Gdx.files.internal("skins/uiskin.json")));
-		Texture temp = new Texture(Gdx.files.internal("textures/test1.png"));
-		emotionalHumanoid = new EmotionalHumanoid(new Sprite(temp));
+		currentScore = new CurrentScore(Assets.defaultSkin);
+		highScore = new HighScore(Assets.defaultSkin);
+		emotionalHumanoid = new EmotionalHumanoid(new Sprite(Assets.sadFace), this);
 	}
 	
 	// initialize the stage object and actors within it

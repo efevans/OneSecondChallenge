@@ -11,6 +11,7 @@ public class OneSecondChallenge extends Game implements ApplicationListener {
 	{
 		// load assets and initialize any data here
 		GlobalPlayerData.initPlayerData();
+		Assets.load();
 		
 		setScreen(new MainMenuScreen(this));
 	}

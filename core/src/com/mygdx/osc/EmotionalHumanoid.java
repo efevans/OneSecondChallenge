@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 
 public class EmotionalHumanoid extends Image
 {
@@ -35,10 +36,18 @@ public class EmotionalHumanoid extends Image
 		GameScreen.WinState state = gameScreen.getState();
 		switch(state)
 		{
-		case TIMING: break;
-		case WONLAST: break;
-		case LOSTLAST: break;
-		case NOTPLAYED: break;
+		case TIMING: 
+			setDrawable(new SpriteDrawable(new Sprite(Assets.happeningFace)));
+			break;
+		case WONLAST: 
+			setDrawable(new SpriteDrawable(new Sprite(Assets.happyFace)));
+			break;
+		case LOSTLAST: 
+			setDrawable(new SpriteDrawable(new Sprite(Assets.sadFace)));
+			break;
+		case NOTPLAYED: 
+			setDrawable(new SpriteDrawable(new Sprite(Assets.anxiousFace)));
+			break;
 		}
 	}
 	
