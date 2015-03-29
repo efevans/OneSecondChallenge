@@ -48,7 +48,7 @@ public class MainMenuTable extends AbstractButtonTable
 			}
 		});
 		
-		TextButton resetHighScore = new TextButton("ResetHighScore", Assets.defaultSkin);
+		TextButton resetHighScore = new TextButton("Reset HighScore", Assets.defaultSkin);
 		resetHighScore.addListener(new ClickListener()
 		{
 			@Override
