@@ -5,7 +5,6 @@ package com.mygdx.osc;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mygdx.osc.playerdata.GlobalPlayerData;
 
 public class HighScore extends Label
@@ -13,9 +12,9 @@ public class HighScore extends Label
 
 	private int highScore;
 	
-	public HighScore(Skin skin)
+	public HighScore()
 	{
-		super("", skin);
+		super("", Assets.defaultSkin);
 		highScore = GlobalPlayerData.getHighScore();
 		setTouchable(Touchable.disabled);
 		
@@ -28,6 +27,7 @@ public class HighScore extends Label
 	@Override
 	public void act(float delta)
 	{
+		highScore = GlobalPlayerData.getHighScore();
 		setText(Integer.toString(highScore));
 	}
 	

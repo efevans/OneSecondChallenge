@@ -1,21 +1,22 @@
-// Basic Main Menu. Current just contains buttons for access the playable game screen. 
-// Considering if it would be useful to have a reset high score button here.
+// Basic Main Menu. Current just contains buttons for access the playable game screen and
+// reseting high score. 
 
 package com.mygdx.osc;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class MainMenuScreen implements Screen 
 {
 	
 	OneSecondChallenge game;
-	private SpriteBatch batch;
 	private Stage stage;
+	
+	// game objects
 	private MainMenuTable mainMenuTable;
+	private HighScore highScore;
 	
 	MainMenuScreen(OneSecondChallenge game)
 	{
@@ -25,11 +26,12 @@ public class MainMenuScreen implements Screen
 	@Override
 	public void show() 
 	{
-		batch = new SpriteBatch();
 		stage = new Stage();
 		mainMenuTable = new MainMenuTable(game);
+		highScore = new HighScore();
 		
 		stage.addActor(mainMenuTable.getTable());
+		stage.addActor(highScore);
 		Gdx.input.setInputProcessor(stage);
 	}
 
@@ -73,9 +75,7 @@ public class MainMenuScreen implements Screen
 	@Override
 	public void dispose() 
 	{
-		batch.dispose();
 		stage.dispose();
-
 	}
 
 }

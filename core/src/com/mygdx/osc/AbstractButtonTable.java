@@ -12,7 +12,6 @@ public abstract class AbstractButtonTable
 {
 	
 	protected Table table;
-	protected Skin skin;
 	protected HashMap<String, TextButton> buttonMap; // hash of Strings to buttons
 	
 	// general function to initialize the class's objects including table and buttons

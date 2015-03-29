@@ -8,10 +8,10 @@ import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.mygdx.osc.playerdata.GlobalPlayerData;
 
 public class MainMenuTable extends AbstractButtonTable 
 {
@@ -26,7 +26,6 @@ public class MainMenuTable extends AbstractButtonTable
 	@Override
 	public void initialize() 
 	{
-		skin = new Skin(Gdx.files.internal("skins/uiskin.json")); // temp, no skin avail
 		table = new Table();
 		buttonMap = new HashMap<String, TextButton>();
 
@@ -37,7 +36,7 @@ public class MainMenuTable extends AbstractButtonTable
 	@Override
 	public void readyButtons() 
 	{
-		TextButton start = new TextButton("Start", skin);
+		TextButton start = new TextButton("Start", Assets.defaultSkin);
 		start.addListener(new ClickListener()
 		{
 			@Override
@@ -49,8 +48,19 @@ public class MainMenuTable extends AbstractButtonTable
 			}
 		});
 		
+		TextButton resetHighScore = new TextButton("ResetHighScore", Assets.defaultSkin);
+		resetHighScore.addListener(new ClickListener()
+		{
+			@Override
+			public void clicked(InputEvent event, float x, float y)
+			{
+				Gdx.app.log("MyTag", "clicked!");
+				GlobalPlayerData.forceSetNewHighScore(0);
+			}
+		});
+		
 		buttonMap.put("Start", start);
-		buttonMap.put("Temp", new TextButton("Temp", skin));
+		buttonMap.put("Temp", resetHighScore);
 		
 	}
 
