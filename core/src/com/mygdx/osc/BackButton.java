@@ -14,6 +14,8 @@ public class BackButton extends ImageButton
 	
 	public BackButton(Drawable imageUp, Drawable imageDown, OneSecondChallenge gameO)
 	{
+		super(imageUp, imageDown);
+		this.game = gameO;
 		initializeActor();
 	}
 	
@@ -39,4 +41,3 @@ public class BackButton extends ImageButton
 		setBounds(0, y, Assets.anxiousFace.getWidth(), Assets.anxiousFace.getHeight());
 	}
 }
-

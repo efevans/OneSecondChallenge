@@ -9,6 +9,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 
 public class GameScreen implements Screen 
 {
@@ -32,6 +33,7 @@ public class GameScreen implements Screen
 	CurrentScore currentScore;
 	HighScore highScore;
 	EmotionalHumanoid emotionalHumanoid;
+	BackButton backButton;
 	
 	public GameScreen(OneSecondChallenge game)
 	{
@@ -55,6 +57,8 @@ public class GameScreen implements Screen
 		currentScore = new CurrentScore(Assets.defaultSkin);
 		highScore = new HighScore();
 		emotionalHumanoid = new EmotionalHumanoid(new Sprite(Assets.sadFace), this);
+		backButton = new BackButton(new SpriteDrawable(new Sprite(Assets.happeningFace)),
+									new SpriteDrawable(new Sprite(Assets.happyFace)), game);
 	}
 	
 	// initialize the stage object and actors within it
@@ -65,6 +69,7 @@ public class GameScreen implements Screen
 		stage.addActor(currentScore);
 		stage.addActor(highScore);
 		stage.addActor(emotionalHumanoid);
+		stage.addActor(backButton);
 	}
 
 	@Override
