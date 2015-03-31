@@ -4,6 +4,7 @@
 package com.mygdx.osc;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
@@ -14,6 +15,10 @@ public class Assets
 	public static Texture happeningFace;
 	public static Texture anxiousFace;
 	
+	public static Sound pressDownSound;
+	public static Sound wonRoundSound;
+	public static Sound lostRoundSound;
+	
 	public static Skin defaultSkin;
 	
 	// preload any game assets
@@ -21,6 +26,7 @@ public class Assets
 	{
 		loadTextures();
 		loadSkins();
+		loadSounds();
 	}
 	
 	// load any textures to be used
@@ -32,9 +38,18 @@ public class Assets
 		anxiousFace = new Texture(Gdx.files.internal("textures/test4.png"));
 	}
 	
-	// load and skins to be used
+	// load any skins to be used
 	private static void loadSkins()
 	{
 		defaultSkin = new Skin(Gdx.files.internal("skins/uiskin.json"));
 	}
+	
+	// load any sounds to be used. This will likely only be short sound effects and
+	// leave longer sounds, like long BGM, to streaming
+	private static void loadSounds()
+	{
+//		wonRoundSound = Gdx.audio.newSound(Gdx.files.internal("sounds/bubuuun.wav"));
+		wonRoundSound = Gdx.audio.newSound(Gdx.files.internal("sounds/wawawa.flac"));
+	}
+	
 }
