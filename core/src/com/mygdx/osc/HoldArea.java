@@ -91,7 +91,7 @@ public class HoldArea extends Actor
 	{
 //		touchAreaSprite.scale(getHeight() / touchAreaSprite.getHeight()); 
 		batch.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-		batch.draw(touchAreaSprite, getX(), getY(), getWidth(), getHeight());
+		batch.draw(touchAreaSprite, getX(), 0, getWidth(), getHeight() * 0.8f);
 	}
 	
 	@Override
