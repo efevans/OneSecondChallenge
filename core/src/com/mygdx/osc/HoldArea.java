@@ -4,6 +4,7 @@
 package com.mygdx.osc;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -18,6 +19,9 @@ public class HoldArea extends Actor
 	
 	float touchTimer;
 	boolean timing;
+	
+	private Sound wonSound = Assets.wonRoundSound;
+	private Sound lostSound = Assets.lostRoundSound;
 	
 	public HoldArea(GameScreen gameScreen)
 	{
@@ -63,12 +67,13 @@ public class HoldArea extends Actor
 	{
 		if (time > 0.93f && time < 1.07f)
 		{
+			wonSound.play();
 			gameScreen.incrementScore();
 			gameScreen.setState(GameScreen.WinState.WONLAST);
-			Assets.wonRoundSound.play();
 		}
 		else
 		{
+			lostSound.play();
 			gameScreen.resetScore();
 			gameScreen.setState(GameScreen.WinState.LOSTLAST);
 		}
@@ -84,14 +89,4 @@ public class HoldArea extends Actor
 			touchTimer += delta;
 		}
 	}
-	
-	
-//	@Override
-//	public void draw(Batch batch, float parentAlpha)
-//	{
-//		
-//	}
-	
-	
-
 }

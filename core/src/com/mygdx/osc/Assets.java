@@ -18,6 +18,7 @@ public class Assets
 	public static Sound pressDownSound;
 	public static Sound wonRoundSound;
 	public static Sound lostRoundSound;
+	public static Sound enteredGameScreenSound;
 	
 	public static Skin defaultSkin;
 	
@@ -48,8 +49,10 @@ public class Assets
 	// leave longer sounds, like long BGM, to streaming
 	private static void loadSounds()
 	{
-//		wonRoundSound = Gdx.audio.newSound(Gdx.files.internal("sounds/bubuuun.wav"));
+		pressDownSound = Gdx.audio.newSound(Gdx.files.internal("sounds/wawawa.flac"));
 		wonRoundSound = Gdx.audio.newSound(Gdx.files.internal("sounds/wawawa.flac"));
+		lostRoundSound = Gdx.audio.newSound(Gdx.files.internal("sounds/wawawa.flac"));
+		enteredGameScreenSound = Gdx.audio.newSound(Gdx.files.internal("sounds/wawawa.flac"));
 	}
 	
 }
