@@ -15,6 +15,8 @@ public class Assets
 	public static Texture happeningFace;
 	public static Texture anxiousFace;
 	
+	public static Texture holdAreaTexture;
+	
 	public static Sound pressDownSound;
 	public static Sound wonRoundSound;
 	public static Sound lostRoundSound;
@@ -37,6 +39,8 @@ public class Assets
 		happyFace = new Texture(Gdx.files.internal("textures/test2.png"));
 		happeningFace = new Texture(Gdx.files.internal("textures/test3.png"));
 		anxiousFace = new Texture(Gdx.files.internal("textures/test4.png"));
+		
+		holdAreaTexture = new Texture(Gdx.files.internal("textures/holdarea.png"));
 	}
 	
 	// load any skins to be used

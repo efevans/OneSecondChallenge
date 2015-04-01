@@ -5,6 +5,8 @@ package com.mygdx.osc;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -19,6 +21,8 @@ public class HoldArea extends Actor
 	
 	float touchTimer;
 	boolean timing;
+	
+	private Sprite touchAreaSprite;
 	
 	private Sound wonSound = Assets.wonRoundSound;
 	private Sound lostSound = Assets.lostRoundSound;
@@ -35,6 +39,7 @@ public class HoldArea extends Actor
 	{
 		float height = Gdx.graphics.getHeight();
 		float downShift = -1 * (height * topBuffer) / 2 ;
+		touchAreaSprite = new Sprite(Assets.holdAreaTexture);
 		setBounds(0, downShift, Gdx.graphics.getWidth(), Gdx.graphics.getHeight() * (1 - topBuffer));
 		setTouchable(Touchable.enabled);
 		addListener(new InputListener() 
@@ -79,6 +84,14 @@ public class HoldArea extends Actor
 		}
 		
 		return false;
+	}
+	
+	@Override
+	public void draw(Batch batch, float parentAlpha)
+	{
+//		touchAreaSprite.scale(getHeight() / touchAreaSprite.getHeight()); 
+		batch.setColor(1.0f, 1.0f, 1.0f, 1.0f);
+		batch.draw(touchAreaSprite, getX(), getY(), getWidth(), getHeight());
 	}
 	
 	@Override
