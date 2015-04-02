@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 public class GameScreen implements Screen 
 {
@@ -21,6 +22,9 @@ public class GameScreen implements Screen
 		LOSTLAST,
 		NOTPLAYED
 	}
+	
+	private static int minWorldHeight = 1000;
+	private static int minWorldWidth = 800;
 	
 	private OneSecondChallenge game;
 	
@@ -65,6 +69,7 @@ public class GameScreen implements Screen
 	private void initializeStage()
 	{
 		stage = new Stage();
+		stage.setViewport(new StretchViewport(minWorldWidth, minWorldHeight, stage.getCamera()));
 		stage.addActor(holdArea);
 		stage.addActor(currentScore);
 		stage.addActor(highScore);
@@ -139,36 +144,31 @@ public class GameScreen implements Screen
 	@Override
 	public void resize(int width, int height) 
 	{
-
-		
+		stage.getViewport().update(width, height);
 	}
 
 	@Override
 	public void pause() 
 	{
 
-		
 	}
 
 	@Override
 	public void resume() 
 	{
 
-		
 	}
 
 	@Override
 	public void hide() 
 	{
 
-		
 	}
 	
 	@Override
 	public void dispose() 
 	{
-
-
+		
 	}
 
 }

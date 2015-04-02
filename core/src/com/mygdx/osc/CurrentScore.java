@@ -19,7 +19,8 @@ public class CurrentScore extends Label
 		setTouchable(Touchable.disabled);
 		
 		// TODO make this more clear and platform independent
-		setFontScale(5);
+		float fontSize = Gdx.graphics.getDensity() * 3;
+		setFontScale(fontSize);
 		setY(Gdx.graphics.getHeight() - 60);
 		setX(10);
 	}
