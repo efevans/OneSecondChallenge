@@ -5,6 +5,7 @@ package com.mygdx.osc;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
@@ -12,12 +13,15 @@ import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 public class EmotionalHumanoid extends Image
 {
 	
-	Sprite currentSprite;
-	GameScreen gameScreen;
+	private GameScreen gameScreen;
+	private Stage stage;
 	
-	public EmotionalHumanoid(Sprite sprite, GameScreen gameScreen)
+	private Sprite currentSprite;
+	
+	public EmotionalHumanoid(Sprite sprite, GameScreen gameScreen, Stage stage)
 	{
 		super(sprite);
+		this.stage = stage;
 		currentSprite = sprite;
 		this.gameScreen = gameScreen;
 		setTouchable(Touchable.disabled);
@@ -27,10 +31,9 @@ public class EmotionalHumanoid extends Image
 	public void act(float delta)
 	{
 		setImage();
-		setX((Gdx.graphics.getWidth() - currentSprite.getWidth()) / 2);
-		setY(Gdx.graphics.getHeight() * 0.9f - (currentSprite.getHeight() / 2));
+		setX((stage.getWidth() - currentSprite.getWidth()) / 2);
+		setY((stage.getHeight() - currentSprite.getHeight()) * 0.95f);
 		setOrigin(currentSprite.getWidth() / 2.0f, currentSprite.getHeight() / 2.0f);
-		setScale(2);
 	}
 	
 	private void setImage()

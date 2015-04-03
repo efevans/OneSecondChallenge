@@ -49,36 +49,35 @@ public class GameScreen implements Screen
 	public void show() 
 	{
 		winState = WinState.NOTPLAYED;
-//		initializeGameObjects();
 		initializeStage();
+		initializeGameObjects();
 		
 		Gdx.input.setInputProcessor(stage);
 	}
 	
-	// initialize the set of game objects that gon on the GameScreen
-	private void initializeGameObjects(Stage stage)
+	// initialize the set of game objects and add them to the stage
+	private void initializeGameObjects()
 	{
 		holdArea = new HoldArea(this, stage);
 		currentScore = new CurrentScore(Assets.defaultSkin, stage);
 		highScore = new HighScore(stage);
-		emotionalHumanoid = new EmotionalHumanoid(new Sprite(Assets.sadFace), this);
+		emotionalHumanoid = new EmotionalHumanoid(new Sprite(Assets.sadFace), this, stage);
 		backButton = new BackButton(new SpriteDrawable(new Sprite(Assets.happeningFace)),
 									new SpriteDrawable(new Sprite(Assets.happyFace)), game);
+		stage.addActor(holdArea);
+		stage.addActor(currentScore);
+		stage.addActor(highScore);
+		stage.addActor(emotionalHumanoid);
+//		stage.addActor(backButton);
 	}
 	
-	// initialize the stage object and actors within it
+	// initialize the stage object with correct viewport
 	private void initializeStage()
 	{
 		OrthographicCamera camera = new OrthographicCamera();
 		camera.setToOrtho(false, minWorldWidth, minWorldHeight);
 		StretchViewport viewport = new StretchViewport(minWorldWidth, minWorldHeight, camera);
 		stage = new Stage(viewport);
-		initializeGameObjects(stage);
-		stage.addActor(holdArea);
-		stage.addActor(currentScore);
-		stage.addActor(highScore);
-//		stage.addActor(emotionalHumanoid);
-//		stage.addActor(backButton);
 	}
 
 	@Override

@@ -36,8 +36,8 @@ public class HighScore extends Label
 		float fontSize = stage.getHeight() * fontScaleConst;
 		setFontScale(fontSize);
 		setAlignment(0, 8);
-		setY(stage.getHeight() * 0.95f);
 		setX(stage.getWidth() * 0.90f);
+		setY(stage.getHeight() * 0.95f);
 		highScore = GlobalPlayerData.getHighScore();
 		setText(Integer.toString(highScore));
 	}

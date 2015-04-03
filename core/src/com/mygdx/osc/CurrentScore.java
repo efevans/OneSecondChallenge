@@ -18,7 +18,7 @@ public class CurrentScore extends Label
 	
 	public CurrentScore(Skin skin, Stage stage)
 	{
-		super("hi", skin);
+		super("", skin);
 		this.stage = stage;
 		currentScore = 0;
 		setTouchable(Touchable.disabled);
@@ -36,8 +36,8 @@ public class CurrentScore extends Label
 	{
 		float fontSize = stage.getHeight() * fontScaleConst;
 		setFontScale(fontSize);
-		setY(stage.getHeight() * 0.95f);
 		setX(stage.getWidth() * 0.01f);
+		setY(stage.getHeight() * 0.95f);
 		setText(Integer.toString(currentScore));
 	}
 	
