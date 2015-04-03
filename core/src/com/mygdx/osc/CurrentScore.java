@@ -2,7 +2,6 @@
 
 package com.mygdx.osc;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -13,7 +12,7 @@ public class CurrentScore extends Label
 	
 	private final static float fontScaleConst = 0.005f;
 	
-	Stage stage;
+	private Stage stage;
 	
 	private int currentScore;
 	

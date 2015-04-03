@@ -28,10 +28,10 @@ public class MainMenuScreen implements Screen
 	{
 		stage = new Stage();
 		mainMenuTable = new MainMenuTable(game);
-		highScore = new HighScore();
+//		highScore = new HighScore(stage);
 		
 		stage.addActor(mainMenuTable.getTable());
-		stage.addActor(highScore);
+//		stage.addActor(highScore);
 		Gdx.input.setInputProcessor(stage);
 	}
 

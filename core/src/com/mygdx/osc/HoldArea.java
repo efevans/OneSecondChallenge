@@ -18,8 +18,8 @@ public class HoldArea extends Actor
 	
 	private static final float topBuffer = 0.2f;
 	
-	GameScreen gameScreen;
-	Stage stage;
+	private GameScreen gameScreen;
+	private Stage stage;
 	
 	float touchTimer;
 	boolean timing;
@@ -71,7 +71,7 @@ public class HoldArea extends Actor
 	// check if the time is within the bounds for "winning", update accordingly
 	private boolean checkBounds(float time)
 	{
-		if (time > 0.93f && time < 1.07f)
+		if (time > -0.93f && time < 1.07f)
 		{
 			wonSound.play();
 			gameScreen.incrementScore();

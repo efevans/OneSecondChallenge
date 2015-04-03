@@ -6,7 +6,6 @@ package com.mygdx.osc;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -61,7 +60,7 @@ public class GameScreen implements Screen
 	{
 		holdArea = new HoldArea(this, stage);
 		currentScore = new CurrentScore(Assets.defaultSkin, stage);
-		highScore = new HighScore();
+		highScore = new HighScore(stage);
 		emotionalHumanoid = new EmotionalHumanoid(new Sprite(Assets.sadFace), this);
 		backButton = new BackButton(new SpriteDrawable(new Sprite(Assets.happeningFace)),
 									new SpriteDrawable(new Sprite(Assets.happyFace)), game);
@@ -77,7 +76,7 @@ public class GameScreen implements Screen
 		initializeGameObjects(stage);
 		stage.addActor(holdArea);
 		stage.addActor(currentScore);
-//		stage.addActor(highScore);
+		stage.addActor(highScore);
 //		stage.addActor(emotionalHumanoid);
 //		stage.addActor(backButton);
 	}
