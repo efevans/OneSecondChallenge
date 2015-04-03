@@ -25,8 +25,8 @@ public class GameScreen implements Screen
 		NOTPLAYED
 	}
 	
-	private static int minWorldHeight = 1000;
-	private static int minWorldWidth = 800;
+	private final static int minWorldHeight = 1000;
+	private final static int minWorldWidth = 800;
 	
 	private OneSecondChallenge game;
 	
@@ -60,7 +60,7 @@ public class GameScreen implements Screen
 	private void initializeGameObjects(Stage stage)
 	{
 		holdArea = new HoldArea(this, stage);
-		currentScore = new CurrentScore(Assets.defaultSkin);
+		currentScore = new CurrentScore(Assets.defaultSkin, stage);
 		highScore = new HighScore();
 		emotionalHumanoid = new EmotionalHumanoid(new Sprite(Assets.sadFace), this);
 		backButton = new BackButton(new SpriteDrawable(new Sprite(Assets.happeningFace)),
@@ -76,7 +76,7 @@ public class GameScreen implements Screen
 		stage = new Stage(viewport);
 		initializeGameObjects(stage);
 		stage.addActor(holdArea);
-//		stage.addActor(currentScore);
+		stage.addActor(currentScore);
 //		stage.addActor(highScore);
 //		stage.addActor(emotionalHumanoid);
 //		stage.addActor(backButton);
