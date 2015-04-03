@@ -16,7 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 public class HoldArea extends Actor 
 {
 	
-	private static final float topBuffer = 0.2f;
+	private static final float topBuffer = 0.25f;
 	
 	private GameScreen gameScreen;
 	private Stage stage;

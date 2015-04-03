@@ -63,12 +63,12 @@ public class GameScreen implements Screen
 		highScore = new HighScore(stage);
 		emotionalHumanoid = new EmotionalHumanoid(new Sprite(Assets.sadFace), this, stage);
 		backButton = new BackButton(new SpriteDrawable(new Sprite(Assets.happeningFace)),
-									new SpriteDrawable(new Sprite(Assets.happyFace)), game);
+									new SpriteDrawable(new Sprite(Assets.happyFace)), game, stage);
 		stage.addActor(holdArea);
 		stage.addActor(currentScore);
 		stage.addActor(highScore);
 		stage.addActor(emotionalHumanoid);
-//		stage.addActor(backButton);
+		stage.addActor(backButton);
 	}
 	
 	// initialize the stage object with correct viewport
