@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
 public class HoldArea extends Actor 
@@ -18,6 +19,7 @@ public class HoldArea extends Actor
 	private static final float topBuffer = 0.2f;
 	
 	GameScreen gameScreen;
+	Stage stage;
 	
 	float touchTimer;
 	boolean timing;
@@ -27,20 +29,19 @@ public class HoldArea extends Actor
 	private Sound wonSound = Assets.wonRoundSound;
 	private Sound lostSound = Assets.lostRoundSound;
 	
-	public HoldArea(GameScreen gameScreen)
+	public HoldArea(GameScreen gameScreen, Stage stage)
 	{
 		this.gameScreen = gameScreen;
-		initializeActor();
+		this.stage = stage;
+		initializeActor(stage);
 		initializeTiming();
 	}
 	
 	// initialize the hold screen actor, particularly the input listener for screen touching
-	private void initializeActor()
+	private void initializeActor(Stage stage)
 	{
-		float height = Gdx.graphics.getHeight();
-		float downShift = -1 * (height * topBuffer) / 2 ;
 		touchAreaSprite = new Sprite(Assets.holdAreaTexture);
-		setBounds(0, downShift, Gdx.graphics.getWidth(), Gdx.graphics.getHeight() * (1 - topBuffer));
+		setBounds(0, 0, stage.getWidth(), stage.getHeight() * topBuffer);
 		setTouchable(Touchable.enabled);
 		addListener(new InputListener() 
 		{
@@ -89,14 +90,14 @@ public class HoldArea extends Actor
 	@Override
 	public void draw(Batch batch, float parentAlpha)
 	{
-//		touchAreaSprite.scale(getHeight() / touchAreaSprite.getHeight()); 
 		batch.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-		batch.draw(touchAreaSprite, getX(), 0, getWidth(), getHeight() * 0.8f);
+		batch.draw(touchAreaSprite, 0, 0, getWidth(), getHeight());
 	}
 	
 	@Override
 	public void act(float delta)
 	{
+		setBounds(0, 0, stage.getWidth(), stage.getHeight() * (1 - topBuffer));
 		if(timing)
 		{
 			touchTimer += delta;

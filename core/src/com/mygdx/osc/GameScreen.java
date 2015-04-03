@@ -6,7 +6,9 @@ package com.mygdx.osc;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
@@ -48,16 +50,16 @@ public class GameScreen implements Screen
 	public void show() 
 	{
 		winState = WinState.NOTPLAYED;
-		initializeGameObjects();
+//		initializeGameObjects();
 		initializeStage();
 		
 		Gdx.input.setInputProcessor(stage);
 	}
 	
 	// initialize the set of game objects that gon on the GameScreen
-	private void initializeGameObjects()
+	private void initializeGameObjects(Stage stage)
 	{
-		holdArea = new HoldArea(this);
+		holdArea = new HoldArea(this, stage);
 		currentScore = new CurrentScore(Assets.defaultSkin);
 		highScore = new HighScore();
 		emotionalHumanoid = new EmotionalHumanoid(new Sprite(Assets.sadFace), this);
@@ -68,13 +70,16 @@ public class GameScreen implements Screen
 	// initialize the stage object and actors within it
 	private void initializeStage()
 	{
-		stage = new Stage();
-		stage.setViewport(new StretchViewport(minWorldWidth, minWorldHeight, stage.getCamera()));
+		OrthographicCamera camera = new OrthographicCamera();
+		camera.setToOrtho(false, minWorldWidth, minWorldHeight);
+		StretchViewport viewport = new StretchViewport(minWorldWidth, minWorldHeight, camera);
+		stage = new Stage(viewport);
+		initializeGameObjects(stage);
 		stage.addActor(holdArea);
-		stage.addActor(currentScore);
-		stage.addActor(highScore);
-		stage.addActor(emotionalHumanoid);
-		stage.addActor(backButton);
+//		stage.addActor(currentScore);
+//		stage.addActor(highScore);
+//		stage.addActor(emotionalHumanoid);
+//		stage.addActor(backButton);
 	}
 
 	@Override
