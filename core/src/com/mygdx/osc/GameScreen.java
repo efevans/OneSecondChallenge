@@ -62,8 +62,8 @@ public class GameScreen implements Screen
 		currentScore = new CurrentScore(Assets.defaultSkin, stage);
 		highScore = new HighScore(stage);
 		emotionalHumanoid = new EmotionalHumanoid(new Sprite(Assets.sadFace), this, stage);
-		backButton = new BackButton(new SpriteDrawable(new Sprite(Assets.happeningFace)),
-									new SpriteDrawable(new Sprite(Assets.happyFace)), game, stage);
+		backButton = new BackButton(new SpriteDrawable(new Sprite(Assets.backButtonUp)),
+									new SpriteDrawable(new Sprite(Assets.backButtonDown)), game, stage);
 		stage.addActor(holdArea);
 		stage.addActor(currentScore);
 		stage.addActor(highScore);

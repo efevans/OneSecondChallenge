@@ -45,10 +45,10 @@ public class BackButton extends ImageButton
 	
 	private void setupBounds()
 	{
-		float x = 0.01f;
-		float y = stage.getHeight() * 0.79f;
+		float x = stage.getWidth() * 0.005f;
+		float y = stage.getHeight() * 0.76f;
 		float width = stage.getWidth() * 0.10f;
-		float height = stage.getHeight() * 0.07f;
+		float height = stage.getHeight() * 0.10f;
 		setBounds(x, y, width, height);
 	}
 }

@@ -18,6 +18,9 @@ public class Assets
 	public static Texture happeningFace;
 	public static Texture anxiousFace;
 	
+	public static Texture backButtonUp;
+	public static Texture backButtonDown;
+	
 	public static Texture holdAreaTexture;
 	
 	public static Sound pressDownSound;
@@ -45,6 +48,9 @@ public class Assets
 		happyFace = new Texture(Gdx.files.internal("textures/test2.png"));
 		happeningFace = new Texture(Gdx.files.internal("textures/test3.png"));
 		anxiousFace = new Texture(Gdx.files.internal("textures/test4.png"));
+		
+		backButtonUp = new Texture(Gdx.files.internal("textures/backbuttonup.png"));
+		backButtonDown = new Texture(Gdx.files.internal("textures/backbuttondown.png"));
 		
 		holdAreaTexture = new Texture(Gdx.files.internal("textures/holdarea.png"));
 	}
