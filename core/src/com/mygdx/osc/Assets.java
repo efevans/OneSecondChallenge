@@ -6,6 +6,9 @@ package com.mygdx.osc;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class Assets
@@ -22,6 +25,8 @@ public class Assets
 	public static Sound lostRoundSound;
 	public static Sound enteredGameScreenSound;
 	
+	public static BitmapFont scoreFont;
+	
 	public static Skin defaultSkin;
 	
 	// preload any game assets
@@ -30,6 +35,7 @@ public class Assets
 		loadTextures();
 		loadSkins();
 		loadSounds();
+		loadFonts();
 	}
 	
 	// load any textures to be used
@@ -60,6 +66,16 @@ public class Assets
 		wonRoundSound = pressDownSound;
 		lostRoundSound = pressDownSound;
 		enteredGameScreenSound = pressDownSound;
+	}
+	
+	private static void loadFonts()
+	{
+		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/scoreFont.ttf"));
+		FreeTypeFontParameter parameter = new FreeTypeFontParameter();
+		parameter.size = 100;
+		parameter.characters = "0123456789";
+		scoreFont = generator.generateFont(parameter);
+		generator.dispose();
 	}
 	
 }
