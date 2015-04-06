@@ -12,9 +12,10 @@ import com.mygdx.osc.playerdata.GlobalPlayerData;
 
 public class HighScore extends Label
 {
-	
-//	private final static float fontScaleConst = 0.005f;
 
+	private final static float distanceFromLeft = 0.90f;
+	private final static float distanceFromBottom = 0.965f;
+	
 	private Stage stage;
 	private BitmapFont font;
 	
@@ -46,13 +47,9 @@ public class HighScore extends Label
 	// prepares the position, size, and content of the label for displaying
 	private void readyLabel()
 	{
-//		float fontSize = stage.getHeight() * fontScaleConst;
-//		setFontScale(fontSize);
-//		setAlignment(0, 8);
-		setX(stage.getWidth() * 0.90f);
-		setY(stage.getHeight() * 0.965f);
+		setX(stage.getWidth() * distanceFromLeft);
+		setY(stage.getHeight() * distanceFromBottom);
 		highScore = GlobalPlayerData.getHighScore();
-//		setText(Integer.toString(highScore));
 	}
 	
 	public void trySetHighScore(int score)

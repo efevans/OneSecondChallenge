@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 public class HoldArea extends Actor 
 {
 	
+	private static final float winBuffer = 0.15f;
 	private static final float topBuffer = 0.25f;
 	
 	private GameScreen gameScreen;
@@ -71,7 +72,7 @@ public class HoldArea extends Actor
 	// check if the time is within the bounds for "winning", update accordingly
 	private boolean checkBounds(float time)
 	{
-		if (time > -0.93f && time < 1.07f)
+		if (time > 1.0f - winBuffer && time < 1.0f + winBuffer)
 		{
 			wonSound.play();
 			gameScreen.incrementScore();

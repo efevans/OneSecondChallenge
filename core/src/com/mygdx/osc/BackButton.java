@@ -11,6 +11,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 public class BackButton extends ImageButton
 {
 
+	private final static float distanceFromLeft = 0.01f;
+	private final static float distanceFromBottom = 0.76f;
+	private final static float imageHeight = 0.10f;
+	private final static float imageWidth = 0.10f;
+	
 	private OneSecondChallenge game;
 	private Stage stage;
 	
@@ -45,10 +50,10 @@ public class BackButton extends ImageButton
 	
 	private void setupBounds()
 	{
-		float x = stage.getWidth() * 0.005f;
-		float y = stage.getHeight() * 0.76f;
-		float width = stage.getWidth() * 0.10f;
-		float height = stage.getHeight() * 0.10f;
+		float x = stage.getWidth() * distanceFromLeft;
+		float y = stage.getHeight() * distanceFromBottom;
+		float width = stage.getWidth() * imageWidth;
+		float height = stage.getHeight() * imageHeight;
 		setBounds(x, y, width, height);
 	}
 }

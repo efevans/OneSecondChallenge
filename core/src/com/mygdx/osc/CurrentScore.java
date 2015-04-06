@@ -13,7 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 public class CurrentScore extends Label
 {
 	
-//	private final static float fontScaleConst = 0.005f;
+	private final static float distanceFromLeft = 0.01f;
+	private final static float distanceFromBottom = 0.965f;
 	
 	private Stage stage;
 	private BitmapFont font;
@@ -47,12 +48,9 @@ public class CurrentScore extends Label
 	// prepares the position, size, and content of the label for displaying
 	private void readyLabel()
 	{
-//		float fontSize = stage.getHeight() * fontScaleConst;
-//		setFontScale(fontSize);
-		setX(stage.getWidth() * 0.01f);
-		setY(stage.getHeight() * 0.965f);
+		setX(stage.getWidth() * distanceFromLeft);
+		setY(stage.getHeight() * distanceFromBottom);
 		font.setColor(Color.YELLOW);
-//		setText(Integer.toString(currentScore));
 	}
 	
 	public void incrementCurrentScore()
