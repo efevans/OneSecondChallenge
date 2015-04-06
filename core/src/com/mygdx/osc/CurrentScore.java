@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 public class CurrentScore extends Label
 {
 	
-	private final static float distanceFromLeft = 0.01f;
+	private final static float distanceFromLeft = 0.03f;
 	private final static float distanceFromBottom = 0.965f;
 	
 	private Stage stage;

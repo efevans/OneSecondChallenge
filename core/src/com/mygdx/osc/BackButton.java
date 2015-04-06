@@ -14,7 +14,7 @@ public class BackButton extends ImageButton
 	private final static float distanceFromLeft = 0.01f;
 	private final static float distanceFromBottom = 0.76f;
 	private final static float imageHeight = 0.10f;
-	private final static float imageWidth = 0.10f;
+	private final static float imageWidth = 1400f / 800f * 0.10f;
 	
 	private OneSecondChallenge game;
 	private Stage stage;

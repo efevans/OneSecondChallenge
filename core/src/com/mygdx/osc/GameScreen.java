@@ -24,7 +24,7 @@ public class GameScreen implements Screen
 		NOTPLAYED
 	}
 	
-	private final static int minWorldHeight = 1000;
+	private final static int minWorldHeight = 1400;
 	private final static int minWorldWidth = 800;
 	
 	private OneSecondChallenge game;

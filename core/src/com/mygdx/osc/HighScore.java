@@ -13,7 +13,7 @@ import com.mygdx.osc.playerdata.GlobalPlayerData;
 public class HighScore extends Label
 {
 
-	private final static float distanceFromLeft = 0.90f;
+	private final static float distanceFromLeft = 0.87f;
 	private final static float distanceFromBottom = 0.965f;
 	
 	private Stage stage;
