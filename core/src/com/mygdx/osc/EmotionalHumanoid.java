@@ -3,7 +3,6 @@
 
 package com.mygdx.osc;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
@@ -23,7 +22,6 @@ public class EmotionalHumanoid extends Image
 	{
 		super(sprite);
 		this.stage = stage;
-		currentSprite = sprite;
 		this.gameScreen = gameScreen;
 		setTouchable(Touchable.disabled);
 		setupBounds();
@@ -33,9 +31,6 @@ public class EmotionalHumanoid extends Image
 	public void act(float delta)
 	{
 		setImage();
-//		setX((stage.getWidth() - currentSprite.getWidth()) / 2);
-//		setY((stage.getHeight() - currentSprite.getHeight()) * 0.95f);
-//		setOrigin(currentSprite.getWidth() / 2.0f, currentSprite.getHeight() / 2.0f);
 		setupBounds();
 	}
 	
