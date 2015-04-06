@@ -6,17 +6,55 @@ package com.mygdx.osc;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.BitmapFont.HAlignment;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 public class MainMenuScreen implements Screen 
 {
 	
-	OneSecondChallenge game;
+	private class Title extends Actor
+	{
+		private final static float distanceFromBottom = 0.850f;
+		private final static float maxWidth = 1.00f;
+		
+		private BitmapFont font;
+		float xPos;
+		float yPos;
+		float titleWidth;
+		
+		public Title(Stage stage)
+		{
+			font = Assets.titleFont;
+			xPos = 0.0f;
+			yPos = stage.getHeight() * distanceFromBottom;
+			titleWidth = stage.getWidth() * maxWidth;
+			setTouchable(Touchable.disabled);
+		}
+		
+		@Override
+		public void draw(Batch batch, float parentAlpha)
+		{
+			super.draw(batch, parentAlpha);
+//			font.draw(batch, "HIIIIIIIIIIIIII", 40.0f, 40.0f);
+			font.drawWrapped(batch, "ONE SECOND\nCHALLENGE", xPos, yPos, titleWidth, HAlignment.CENTER);
+		}
+	}
+	
+	private final static int minWorldHeight = 1400;
+	private final static int minWorldWidth = 800;
+	
+	private OneSecondChallenge game;
 	private Stage stage;
 	
 	// game objects
 	private MainMenuTable mainMenuTable;
-	private HighScore highScore;
+	private Title title;
 	
 	MainMenuScreen(OneSecondChallenge game)
 	{
@@ -26,13 +64,27 @@ public class MainMenuScreen implements Screen
 	@Override
 	public void show() 
 	{
-		stage = new Stage();
-		mainMenuTable = new MainMenuTable(game);
-//		highScore = new HighScore(stage);
-		
-		stage.addActor(mainMenuTable.getTable());
-//		stage.addActor(highScore);
+		initializeStage();
+		initializeGameObjects();
 		Gdx.input.setInputProcessor(stage);
+	}
+	
+	// initialize the stage object with correct viewport
+	private void initializeStage()
+	{
+		OrthographicCamera camera = new OrthographicCamera();
+		camera.setToOrtho(false, minWorldWidth, minWorldHeight);
+		StretchViewport viewport = new StretchViewport(minWorldWidth, minWorldHeight, camera);
+		stage = new Stage(viewport);
+	}
+	
+	// initialize the set of game objects and add them to the stage
+	private void initializeGameObjects()
+	{
+		mainMenuTable = new MainMenuTable(game);
+		title = new Title(stage);
+		stage.addActor(mainMenuTable.getTable());
+		stage.addActor(title);
 	}
 
 	@Override

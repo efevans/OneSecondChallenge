@@ -51,8 +51,16 @@ public class GameScreen implements Screen
 		winState = WinState.NOTPLAYED;
 		initializeStage();
 		initializeGameObjects();
-		
 		Gdx.input.setInputProcessor(stage);
+	}
+	
+	// initialize the stage object with correct viewport
+	private void initializeStage()
+	{
+		OrthographicCamera camera = new OrthographicCamera();
+		camera.setToOrtho(false, minWorldWidth, minWorldHeight);
+		StretchViewport viewport = new StretchViewport(minWorldWidth, minWorldHeight, camera);
+		stage = new Stage(viewport);
 	}
 	
 	// initialize the set of game objects and add them to the stage
@@ -69,15 +77,6 @@ public class GameScreen implements Screen
 		stage.addActor(highScore);
 		stage.addActor(emotionalHumanoid);
 		stage.addActor(backButton);
-	}
-	
-	// initialize the stage object with correct viewport
-	private void initializeStage()
-	{
-		OrthographicCamera camera = new OrthographicCamera();
-		camera.setToOrtho(false, minWorldWidth, minWorldHeight);
-		StretchViewport viewport = new StretchViewport(minWorldWidth, minWorldHeight, camera);
-		stage = new Stage(viewport);
 	}
 
 	@Override

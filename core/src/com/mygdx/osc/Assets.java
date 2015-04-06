@@ -29,6 +29,7 @@ public class Assets
 	public static Sound enteredGameScreenSound;
 	
 	public static BitmapFont scoreFont;
+	public static BitmapFont titleFont;
 	
 	public static Skin defaultSkin;
 	
@@ -81,6 +82,9 @@ public class Assets
 		parameter.size = 100;
 		parameter.characters = "0123456789";
 		scoreFont = generator.generateFont(parameter);
+		parameter.size = 80;
+		parameter.characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		titleFont = generator.generateFont(parameter);
 		generator.dispose();
 	}
 	
