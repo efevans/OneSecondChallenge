@@ -86,7 +86,7 @@ public class Assets
 		parameter.size = 80;
 		parameter.characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		titleFont = generator.generateFont(parameter);
-		parameter.size = 20;
+		parameter.size = 30;
 		parameter.characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 		buttonFont = generator.generateFont(parameter);
 		generator.dispose();
