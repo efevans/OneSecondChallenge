@@ -8,7 +8,11 @@ import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -19,13 +23,13 @@ public class MainMenuTable extends AbstractButtonTable
 
 	OneSecondChallenge game;
 	private Sound startGameSound;
+	Skin skin;
 	
 	public MainMenuTable(OneSecondChallenge game){
 		this.game = game;
 		initialize();
 	}
 	
-	@Override
 	public void initialize() 
 	{
 		table = new Table();
@@ -35,11 +39,11 @@ public class MainMenuTable extends AbstractButtonTable
 		readyTable();
 	}
 	
-	@Override
 	public void readyButtons() 
 	{
+		Skin skin = readySkin();
 		startGameSound = Assets.enteredGameScreenSound;
-		TextButton start = new TextButton("Start", Assets.defaultSkin);
+		TextButton start = new TextButton("Start", skin);
 		start.addListener(new ClickListener()
 		{
 			@Override
@@ -52,7 +56,7 @@ public class MainMenuTable extends AbstractButtonTable
 			}
 		});
 		
-		TextButton resetHighScore = new TextButton("Reset HighScore", Assets.defaultSkin);
+		TextButton resetHighScore = new TextButton("Reset HighScore", skin);
 		resetHighScore.addListener(new ClickListener()
 		{
 			@Override
@@ -68,7 +72,6 @@ public class MainMenuTable extends AbstractButtonTable
 		
 	}
 
-	@Override
 	public void readyTable() 
 	{
 		table.row().prefSize(120, 60);
@@ -77,5 +80,20 @@ public class MainMenuTable extends AbstractButtonTable
 		table.add(buttonMap.get("Temp")).pad(10).prefSize(240, 120);
 		table.setFillParent(true);
 
+	}
+	
+	private Skin readySkin()
+	{
+		Skin skin = new Skin();
+		skin.add("texture", new Texture(Gdx.files.internal("skins/buttontexture.png")));
+		skin.add("text", Assets.buttonFont);
+		
+		TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
+		buttonStyle.up = skin.newDrawable("texture");
+		buttonStyle.down = skin.newDrawable("texture", Color.CYAN);
+		buttonStyle.font = skin.getFont("text");
+		skin.add("default", buttonStyle);
+		
+		return skin;
 	}
 }
