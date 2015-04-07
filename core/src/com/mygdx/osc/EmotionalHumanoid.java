@@ -14,6 +14,7 @@ public class EmotionalHumanoid extends Image
 
 	private final static float imageHeight = 0.20f;
 	private final static float imageWidth = 1400f / 800f * 0.20f;
+	private final static float topBuffer = 0.02f;
 	
 	private GameScreen gameScreen;
 	private Stage stage;
@@ -37,7 +38,7 @@ public class EmotionalHumanoid extends Image
 	private void setupBounds()
 	{
 		float x = (stage.getWidth() * (1 - imageWidth)) / 2;
-		float y = (stage.getHeight() * (1 - imageHeight));
+		float y = (stage.getHeight() * (1 - imageHeight - topBuffer));
 		float width = stage.getWidth() * imageWidth;
 		float height = stage.getHeight() * imageHeight;
 		setBounds(x, y, width, height);
@@ -49,16 +50,28 @@ public class EmotionalHumanoid extends Image
 		switch(state)
 		{
 		case TIMING: 
-			setDrawable(new SpriteDrawable(new Sprite(Assets.happeningFace)));
+			setDrawable(new SpriteDrawable(new Sprite(Assets.waitingFace)));
 			break;
-		case WONLAST: 
-			setDrawable(new SpriteDrawable(new Sprite(Assets.happyFace)));
+		case WONLASTSHORT: 
+			setDrawable(new SpriteDrawable(new Sprite(Assets.smallHappyFace)));
 			break;
-		case LOSTLAST: 
-			setDrawable(new SpriteDrawable(new Sprite(Assets.sadFace)));
+		case WONLASTMEDIUM: 
+			setDrawable(new SpriteDrawable(new Sprite(Assets.mediumHappyFace)));
+			break;
+		case WONLASTLONG: 
+			setDrawable(new SpriteDrawable(new Sprite(Assets.largeHappyFace)));
+			break;
+		case LOSTLASTSHORT: 
+			setDrawable(new SpriteDrawable(new Sprite(Assets.smallSadFace)));
+			break;
+		case LOSTLASTMEDIUM: 
+			setDrawable(new SpriteDrawable(new Sprite(Assets.mediumSadFace)));
+			break;
+		case LOSTLASTLONG: 
+			setDrawable(new SpriteDrawable(new Sprite(Assets.largeSadFace)));
 			break;
 		case NOTPLAYED: 
-			setDrawable(new SpriteDrawable(new Sprite(Assets.anxiousFace)));
+			setDrawable(new SpriteDrawable(new Sprite(Assets.startFace)));
 			break;
 		}
 	}

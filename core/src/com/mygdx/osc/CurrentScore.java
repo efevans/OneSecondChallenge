@@ -53,9 +53,10 @@ public class CurrentScore extends Label
 		font.setColor(Color.YELLOW);
 	}
 	
-	public void incrementCurrentScore()
+	public int incrementCurrentScore()
 	{
 		++currentScore;
+		return currentScore;
 	}
 	
 	public void resetCurrentScore()

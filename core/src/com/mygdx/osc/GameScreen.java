@@ -19,8 +19,12 @@ public class GameScreen implements Screen
 	enum WinState
 	{
 		TIMING,
-		WONLAST,
-		LOSTLAST,
+		WONLASTSHORT,
+		WONLASTMEDIUM,
+		WONLASTLONG,
+		LOSTLASTSHORT,
+		LOSTLASTMEDIUM,
+		LOSTLASTLONG,
 		NOTPLAYED
 	}
 	
@@ -32,13 +36,14 @@ public class GameScreen implements Screen
 	// personal objects
 	private Stage stage;
 	private static WinState winState;
+	private static int loseStreak;
 	
 	// game objects
-	HoldArea holdArea;
-	CurrentScore currentScore;
-	HighScore highScore;
-	EmotionalHumanoid emotionalHumanoid;
-	BackButton backButton;
+	private HoldArea holdArea;
+	private CurrentScore currentScore;
+	private HighScore highScore;
+	private EmotionalHumanoid emotionalHumanoid;
+	private BackButton backButton;
 	
 	public GameScreen(OneSecondChallenge game)
 	{
@@ -49,6 +54,7 @@ public class GameScreen implements Screen
 	public void show() 
 	{
 		winState = WinState.NOTPLAYED;
+		loseStreak = 0;
 		initializeStage();
 		initializeGameObjects();
 		Gdx.input.setInputProcessor(stage);
@@ -69,7 +75,7 @@ public class GameScreen implements Screen
 		holdArea = new HoldArea(this, stage);
 		currentScore = new CurrentScore(Assets.defaultSkin, stage);
 		highScore = new HighScore(stage);
-		emotionalHumanoid = new EmotionalHumanoid(new Sprite(Assets.sadFace), this, stage);
+		emotionalHumanoid = new EmotionalHumanoid(new Sprite(Assets.startFace), this, stage);
 		backButton = new BackButton(new SpriteDrawable(new Sprite(Assets.backButtonUp)),
 									new SpriteDrawable(new Sprite(Assets.backButtonDown)), game, stage);
 		stage.addActor(holdArea);
@@ -88,31 +94,6 @@ public class GameScreen implements Screen
 		stage.act(delta);
 		stage.draw();
 	}
-	
-	// set the color of the display depending on the current state
-	// TODO make this more involved with pretty graphics
-//	private void setDisplay(WinState winState)
-//	{
-//		switch (winState)
-//		{
-//		case TIMING:
-//			Gdx.gl.glClearColor(0, 0, 1.0f, 1);
-//			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-//			break;
-//		case WONLAST:
-//			Gdx.gl.glClearColor(0, 1.0f, 0, 1);
-//			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-//			break;
-//		case LOSTLAST:
-//			Gdx.gl.glClearColor(1.0f, 0, 0, 1);
-//			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-//			break;
-//		case NOTPLAYED:
-//			Gdx.gl.glClearColor(1.0f, 1.0f, 1.0f, 1);
-//			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-//			break;
-//		}
-//	}
 
 	public WinState getState()
 	{
@@ -130,17 +111,32 @@ public class GameScreen implements Screen
 		return currentScore.getCurrentScore();
 	}
 	
-	// increment current score and update high score if needed
+	// increment current score and update high score if needed, reset lose streak count
 	public void incrementScore()
 	{
-		currentScore.incrementCurrentScore();
-		highScore.trySetHighScore(currentScore.getCurrentScore());
+		int score = currentScore.incrementCurrentScore();
+		highScore.trySetHighScore(score);
+		updateState(score);
+		loseStreak = 0;
 	}
 	
-	// reset current score, after a loss
+	// reset current score and increment lose streak, after a loss
 	public void resetScore()
 	{
 		currentScore.resetCurrentScore();
+		++loseStreak;
+		updateState(0);
+	}
+	
+	// update state based on score and lose streak
+	private void updateState(int score)
+	{
+		if(score >= 20) 		winState = WinState.WONLASTLONG;
+		else if(score >= 10) 	winState = WinState.WONLASTMEDIUM;
+		else if(score >= 1)		winState = WinState.WONLASTSHORT;
+		else if(loseStreak >= 5)	winState = WinState.LOSTLASTLONG;
+		else if(loseStreak >= 3)	winState = WinState.LOSTLASTMEDIUM;
+		else if(loseStreak >= 1)	winState = WinState.LOSTLASTSHORT;
 	}
 
 	@Override

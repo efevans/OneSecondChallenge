@@ -13,10 +13,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class Assets
 {
-	public static Texture sadFace;
-	public static Texture happyFace;
-	public static Texture happeningFace;
-	public static Texture anxiousFace;
+	public static Texture smallSadFace;
+	public static Texture mediumSadFace;
+	public static Texture largeSadFace;
+	
+	public static Texture smallHappyFace;
+	public static Texture mediumHappyFace;
+	public static Texture largeHappyFace;
+	
+	public static Texture startFace;
+	public static Texture waitingFace;
 	
 	public static Texture backButtonUp;
 	public static Texture backButtonDown;
@@ -46,10 +52,16 @@ public class Assets
 	// load any textures to be used
 	private static void loadTextures()
 	{
-		sadFace = new Texture(Gdx.files.internal("textures/test1.png"));
-		happyFace = new Texture(Gdx.files.internal("textures/test2.png"));
-		happeningFace = new Texture(Gdx.files.internal("textures/test3.png"));
-		anxiousFace = new Texture(Gdx.files.internal("textures/test4.png"));
+		smallSadFace = new Texture(Gdx.files.internal("textures/smallsad.png"));
+		mediumSadFace = new Texture(Gdx.files.internal("textures/mediumsad.png"));
+		largeSadFace = new Texture(Gdx.files.internal("textures/highsad.png"));
+		
+		smallHappyFace = new Texture(Gdx.files.internal("textures/smallhappy.png"));
+		mediumHappyFace = new Texture(Gdx.files.internal("textures/mediumhappy.png"));
+		largeHappyFace = new Texture(Gdx.files.internal("textures/highhappy.png"));
+		
+		startFace = new Texture(Gdx.files.internal("textures/start.png"));
+		waitingFace = new Texture(Gdx.files.internal("textures/waiting.png"));
 		
 		backButtonUp = new Texture(Gdx.files.internal("textures/backbuttonup.png"));
 		backButtonDown = new Texture(Gdx.files.internal("textures/backbuttondown.png"));

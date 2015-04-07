@@ -76,13 +76,11 @@ public class HoldArea extends Actor
 		{
 			wonSound.play();
 			gameScreen.incrementScore();
-			gameScreen.setState(GameScreen.WinState.WONLAST);
 		}
 		else
 		{
 			lostSound.play();
 			gameScreen.resetScore();
-			gameScreen.setState(GameScreen.WinState.LOSTLAST);
 		}
 		
 		return false;
