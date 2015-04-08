@@ -35,8 +35,9 @@ public class GameScreen implements Screen
 	
 	// personal objects
 	private Stage stage;
-	private static WinState winState;
-	private static int loseStreak;
+	private WinState winState;
+	private int loseStreak;
+	private float lostBy;
 	
 	// game objects
 	private HoldArea holdArea;
@@ -44,6 +45,7 @@ public class GameScreen implements Screen
 	private HighScore highScore;
 	private EmotionalHumanoid emotionalHumanoid;
 	private BackButton backButton;
+	private FeedbackLabel feedbackLabel;
 	
 	public GameScreen(OneSecondChallenge game)
 	{
@@ -55,6 +57,7 @@ public class GameScreen implements Screen
 	{
 		winState = WinState.NOTPLAYED;
 		loseStreak = 0;
+		lostBy = 0.0f;
 		initializeStage();
 		initializeGameObjects();
 		Gdx.input.setInputProcessor(stage);
@@ -78,11 +81,14 @@ public class GameScreen implements Screen
 		emotionalHumanoid = new EmotionalHumanoid(new Sprite(Assets.startFace), this, stage);
 		backButton = new BackButton(new SpriteDrawable(new Sprite(Assets.backButtonUp)),
 									new SpriteDrawable(new Sprite(Assets.backButtonDown)), game, stage);
+		feedbackLabel = new FeedbackLabel(stage, this);
+		
 		stage.addActor(holdArea);
 		stage.addActor(currentScore);
 		stage.addActor(highScore);
 		stage.addActor(emotionalHumanoid);
 		stage.addActor(backButton);
+		stage.addActor(feedbackLabel);
 	}
 
 	@Override
@@ -111,20 +117,27 @@ public class GameScreen implements Screen
 		return currentScore.getCurrentScore();
 	}
 	
+	public float getLostBy()
+	{
+		return lostBy;
+	}
+	
 	// increment current score and update high score if needed, reset lose streak count
 	public void incrementScore()
 	{
 		int score = currentScore.incrementCurrentScore();
 		highScore.trySetHighScore(score);
 		loseStreak = 0;
+		lostBy = 0.0f;
 		updateState(score);
 	}
 	
-	// reset current score and increment lose streak, after a loss
-	public void resetScore()
+	// reset current score, increment lose streak and set the amount lost by, after a loss
+	public void resetScore(float timeDifference)
 	{
 		currentScore.resetCurrentScore();
 		++loseStreak;
+		lostBy = timeDifference;
 		updateState(0);
 	}
 	

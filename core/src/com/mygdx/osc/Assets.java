@@ -37,6 +37,7 @@ public class Assets
 	public static BitmapFont scoreFont;
 	public static BitmapFont titleFont;
 	public static BitmapFont buttonFont;
+	public static BitmapFont informFont;
 	
 	public static Skin defaultSkin;
 	
@@ -98,6 +99,9 @@ public class Assets
 		parameter.size = 30;
 		parameter.characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 		buttonFont = generator.generateFont(parameter);
+		parameter.size = 48;
+		parameter.characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!";
+		informFont = generator.generateFont(parameter);
 		generator.dispose();
 	}
 	

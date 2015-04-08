@@ -80,10 +80,27 @@ public class HoldArea extends Actor
 		else
 		{
 			lostSound.play();
-			gameScreen.resetScore();
+			float lostBy = calculateDifference(time);
+			gameScreen.resetScore(lostBy);
 		}
 		
 		return false;
+	}
+	
+	// calculates how close the player's time was to the win buffer
+	private float calculateDifference(float time)
+	{
+		float lostBy = 0.0f;
+		if(time > 1.0f)
+		{
+			lostBy = time - (1.0f + winBuffer);
+		}
+		else
+		{
+			lostBy = time - (1.0f - winBuffer);
+		}
+		
+		return lostBy;
 	}
 	
 	@Override
