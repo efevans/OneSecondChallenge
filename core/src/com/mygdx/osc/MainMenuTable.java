@@ -7,7 +7,6 @@ package com.mygdx.osc;
 import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -27,7 +26,6 @@ public class MainMenuTable extends AbstractButtonTable
 
 	private OneSecondChallenge game;
 	private Stage stage;
-	private Sound startGameSound;
 	
 	public MainMenuTable(OneSecondChallenge game, Stage stage){
 		this.game = game;
@@ -47,7 +45,6 @@ public class MainMenuTable extends AbstractButtonTable
 	public void readyButtons() 
 	{
 		Skin skin = readySkin();
-		startGameSound = Assets.enteredGameScreenSound;
 		TextButton start = new TextButton("Start", skin);
 		start.addListener(new ClickListener()
 		{
@@ -55,7 +52,6 @@ public class MainMenuTable extends AbstractButtonTable
 			public void clicked(InputEvent event, float x, float y)
 			{
 				Gdx.app.log("MyTag", "clicked!");
-				startGameSound.play();
 				Gdx.input.setInputProcessor(null);
 				game.setScreen(new GameScreen(game));
 			}
