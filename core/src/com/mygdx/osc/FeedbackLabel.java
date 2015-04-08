@@ -67,7 +67,7 @@ public class FeedbackLabel extends Actor
 			}
 			else if(lostBy > 0.15)
 			{
-				informText = "Too long";
+				informText = "Too\nlong";
 				font.setColor(Color.RED);
 			}
 			else if(lostBy > 0.05)
