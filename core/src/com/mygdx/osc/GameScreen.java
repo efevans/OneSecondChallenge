@@ -116,8 +116,8 @@ public class GameScreen implements Screen
 	{
 		int score = currentScore.incrementCurrentScore();
 		highScore.trySetHighScore(score);
-		updateState(score);
 		loseStreak = 0;
+		updateState(score);
 	}
 	
 	// reset current score and increment lose streak, after a loss

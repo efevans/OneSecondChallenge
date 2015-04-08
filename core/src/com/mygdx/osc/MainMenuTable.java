@@ -11,6 +11,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -22,13 +23,15 @@ public class MainMenuTable extends AbstractButtonTable
 	
 	private final static int buttonWidth = 360;
 	private final static int buttonHeight = 180;
+	private final static float tableYPos = -0.10f;
 
-	OneSecondChallenge game;
+	private OneSecondChallenge game;
+	private Stage stage;
 	private Sound startGameSound;
-	Skin skin;
 	
-	public MainMenuTable(OneSecondChallenge game){
+	public MainMenuTable(OneSecondChallenge game, Stage stage){
 		this.game = game;
+		this.stage = stage;
 		initialize();
 	}
 	
@@ -81,7 +84,7 @@ public class MainMenuTable extends AbstractButtonTable
 		table.row();
 		table.add(buttonMap.get("Temp")).pad(10).prefSize(buttonWidth, buttonHeight);
 		table.setFillParent(true);
-
+		table.setY(stage.getHeight() * tableYPos);
 	}
 	
 	private Skin readySkin()

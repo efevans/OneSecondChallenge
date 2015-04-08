@@ -29,6 +29,8 @@ public class Assets
 	
 	public static Texture holdAreaTexture;
 	
+	public static Texture titleScreenBackground;
+	
 	public static Sound pressDownSound;
 	public static Sound wonRoundSound;
 	public static Sound lostRoundSound;
@@ -67,6 +69,8 @@ public class Assets
 		backButtonDown = new Texture(Gdx.files.internal("textures/backbuttondown.png"));
 		
 		holdAreaTexture = new Texture(Gdx.files.internal("textures/holdarea.png"));
+		
+		titleScreenBackground = new Texture(Gdx.files.internal("textures/titlescreen.png"));
 	}
 	
 	// load any skins to be used
@@ -95,7 +99,7 @@ public class Assets
 		parameter.size = 100;
 		parameter.characters = "0123456789";
 		scoreFont = generator.generateFont(parameter);
-		parameter.size = 80;
+		parameter.size = 100;
 		parameter.characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		titleFont = generator.generateFont(parameter);
 		parameter.size = 30;
